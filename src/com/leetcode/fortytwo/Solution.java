@@ -24,23 +24,24 @@ public class Solution {
      */
 
     public static void main(String[] args) {
-        int[] example = new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        trap(example);
+        int[] example = new int[]{0, 3, 0, 2, 1, 6, 1, 3, 2, 1, 2, 7, 2};
+        System.out.println(trap(example));
     }
 
     /**
-     * 三个数以上,
-     * 凸凹凸规则,
-     * 以第二大的数为基准补齐
+     * 动态规划
+     *
      * @param height
      * @return
      */
     public static int trap(int[] height) {
         int sum = 0;
+        // 找出位置索引上当前位置的左边最大数
         int[] maxLeft = new int[height.length];
+        // 找出位置索引上当前位置的右边最大数
         int[] rightLeft = new int[height.length];
-        for (int i = 1; i < height.length-1; i++) {
-            maxLeft[i]=Math.max(maxLeft[i-1],height[i-1]);
+        for (int i = 1; i < height.length - 1; i++) {
+            maxLeft[i] = Math.max(maxLeft[i - 1], height[i - 1]);
         }
         for (int i = height.length - 2; i >= 0; i--) {
             rightLeft[i] = Math.max(rightLeft[i + 1], height[i + 1]);
@@ -53,5 +54,18 @@ public class Solution {
         }
         return sum;
     }
+
+
+    /**
+     *
+     * 双指针
+     * @param height
+     * @return
+     */
+    public static int trap1(int[] height) {
+
+        return 0;
+    }
+
 
 }
